@@ -124,4 +124,4 @@ docs/                       # 你正在读的这套文档
 - [ ] 精选 11 条筛选可用，点卡片能开弹层，Esc 能关
 - [ ] 作品库初始 12 条，「展开全部 31 条」后变 31 条
 - [ ] 手机宽度（390px）下无横向溢出
-- [ ] `git log --oneline` 能看到 4 条提交，`main` 与线上一致
+- [ ] `git log --oneline -1` 与线上 `main` 一致（`gh run list --limit 1` 应为 success）
