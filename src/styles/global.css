@@ -715,6 +715,11 @@ video {
   margin-top: 34px;
 }
 
+/* 31 条里横屏连排时，8 栏宽的卡片会剩 4 栏空位；密集排列自动用小卡回填。 */
+#library .grid {
+  grid-auto-flow: dense;
+}
+
 /* ---------- projects ---------- */
 
 .projects {
