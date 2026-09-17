@@ -709,6 +709,12 @@ video {
   color: var(--text-dim);
 }
 
+.library__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 34px;
+}
+
 /* ---------- projects ---------- */
 
 .projects {

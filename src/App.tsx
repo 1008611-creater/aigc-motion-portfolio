@@ -4,6 +4,7 @@ import type { Work } from "./data/portfolio";
 import { CursorField, Footer, Nav, ScrollProgress } from "./components/Chrome";
 import { Hero } from "./components/Hero";
 import { Lightbox } from "./components/Lightbox";
+import { LibrarySection } from "./components/LibrarySection";
 import {
   CapabilitySection,
   ContactSection,
@@ -27,6 +28,7 @@ export default function App() {
       <main>
         <Hero />
         <WorkSection onOpen={setActive} />
+        <LibrarySection onOpen={setActive} />
         <ProjectSection />
         <ServiceSection />
         <CapabilitySection />

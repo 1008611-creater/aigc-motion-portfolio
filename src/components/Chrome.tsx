@@ -3,6 +3,7 @@ import { motion, useScroll, useSpring } from "motion/react";
 
 const NAV_ITEMS = [
   { id: "work", label: "作品" },
+  { id: "library", label: "作品库" },
   { id: "projects", label: "项目" },
   { id: "capability", label: "能力" },
   { id: "contact", label: "联系" },

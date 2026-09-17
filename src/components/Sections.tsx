@@ -34,7 +34,7 @@ export function WorkSection({ onOpen }: { onOpen: (work: Work) => void }) {
     <section className="section" id="work">
       <SectionHead
         eyebrow="Selected Work"
-        title="11 条真实样片，按用途归类"
+        title="11 条精选样片，按用途归类"
         copy="每条都标了真实时长与交付比例，方便先判断质量与适配场景，再决定怎么合作。"
       />
 

@@ -42,7 +42,7 @@ export const profile: Profile = {
 };
 
 export const heroStats = [
-  { value: '11', label: '条真实样片', note: '竖屏 / 横屏交付' },
+  { value: '42', label: '条真实样片', note: '11 条精选 + 31 条全量' },
   { value: '5w+', label: '商业变现', note: 'AI 视频交付链路' },
   { value: '30+', label: '付费用户', note: '含 MCN 复购' },
   { value: '3 天', label: '交付周期', note: '从 7 天压缩而来' },
