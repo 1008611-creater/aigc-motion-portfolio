@@ -2,6 +2,8 @@ import { useState } from "react";
 import { libraryWorks } from "../data/library";
 import type { Work } from "../data/portfolio";
 import { useReveal } from "../hooks/useReveal";
+import { FilterChips } from "./FilterChips";
+import { SectionHead } from "./SectionHead";
 import { WorkCard } from "./WorkCard";
 
 const FILTERS = ["全部", "横屏", "竖屏"] as const;
@@ -26,27 +28,18 @@ export function LibrarySection({ onOpen }: { onOpen: (work: Work) => void }) {
 
   return (
     <section className="section" id="library">
-      <div className="head">
-        <p className="eyebrow">Full Archive</p>
-        <h2 className="head__title">31 条真实样片全量归档</h2>
-        <p className="head__copy">
-          与上方精选同一批交付，按横竖屏归档，每条标注实测分辨率与时长，可直接点击播放。
-        </p>
-      </div>
+      <SectionHead
+        eyebrow="Full Archive"
+        title="31 条真实样片全量归档"
+        copy="与上方精选同一批交付，按横竖屏归档，每条标注实测分辨率与时长，可直接点击播放。"
+      />
 
-      <div className="filters" role="group" aria-label="按画面比例筛选">
-        {FILTERS.map((item) => (
-          <button
-            key={item}
-            type="button"
-            className={item === filter ? "chip is-active" : "chip"}
-            aria-pressed={item === filter}
-            onClick={() => changeFilter(item)}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+      <FilterChips
+        items={FILTERS}
+        value={filter}
+        onChange={changeFilter}
+        ariaLabel="按画面比例筛选"
+      />
 
       <div className="grid" ref={ref} data-reveal="hidden">
         {visible.map((work) => (

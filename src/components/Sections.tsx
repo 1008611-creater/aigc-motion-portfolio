@@ -2,27 +2,11 @@ import { useState } from "react";
 import { capabilities, education, profile, projects, services, steps, works } from "../data/portfolio";
 import type { Work } from "../data/portfolio";
 import { useReveal } from "../hooks/useReveal";
+import { FilterChips } from "./FilterChips";
+import { SectionHead } from "./SectionHead";
 import { WorkCard } from "./WorkCard";
 
 const FILTERS = ["全部", "产品广告", "门店内容", "人物种草", "食品视觉", "场景视觉"] as const;
-
-function SectionHead({
-  eyebrow,
-  title,
-  copy,
-}: {
-  eyebrow: string;
-  title: string;
-  copy?: string;
-}) {
-  return (
-    <div className="head">
-      <p className="eyebrow">{eyebrow}</p>
-      <h2 className="head__title">{title}</h2>
-      {copy ? <p className="head__copy">{copy}</p> : null}
-    </div>
-  );
-}
 
 export function WorkSection({ onOpen }: { onOpen: (work: Work) => void }) {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("全部");
@@ -38,19 +22,12 @@ export function WorkSection({ onOpen }: { onOpen: (work: Work) => void }) {
         copy="每条都标了真实时长与交付比例，方便先判断质量与适配场景，再决定怎么合作。"
       />
 
-      <div className="filters" role="group" aria-label="按用途筛选">
-        {FILTERS.map((item) => (
-          <button
-            key={item}
-            type="button"
-            className={item === filter ? "chip is-active" : "chip"}
-            aria-pressed={item === filter}
-            onClick={() => setFilter(item)}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+      <FilterChips
+        items={FILTERS}
+        value={filter}
+        onChange={setFilter}
+        ariaLabel="按用途筛选"
+      />
 
       <div className="grid" ref={ref} data-reveal="hidden">
         {visible.map((work) => (
