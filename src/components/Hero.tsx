@@ -10,7 +10,7 @@ export function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const mediaY = useTransform(scrollYProgress, [0, 1], ["0%", reduced ? "0%" : "14%"]);
   const copyY = useTransform(scrollYProgress, [0, 1], ["0%", reduced ? "0%" : "-18%"]);
-  const veil = useTransform(scrollYProgress, [0, 0.9], [0.34, 0.86]);
+  const veil = useTransform(scrollYProgress, [0, 0.9], reduced ? [0.34, 0.34] : [0.34, 0.86]);
 
   return (
     <section className="hero" id="top" ref={ref}>
@@ -18,11 +18,11 @@ export function Hero() {
         <video
           src={heroWork.video}
           poster={heroWork.poster}
-          autoPlay
+          autoPlay={!reduced}
           muted
           loop
           playsInline
-          preload="metadata"
+          preload={reduced ? "none" : "metadata"}
         />
         <motion.span className="hero__veil" style={{ opacity: veil }} />
       </motion.div>

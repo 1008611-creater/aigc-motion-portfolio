@@ -1,3 +1,35 @@
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../assets/fonts/bricolage-500.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../assets/fonts/bricolage-600.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../assets/fonts/bricolage-700.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../assets/fonts/bricolage-800.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
 :root {
   --bg: #07080a;
   --bg-soft: #0d0f12;
@@ -15,8 +47,8 @@
   --radius-lg: 26px;
   --pad: clamp(20px, 5vw, 84px);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --font-display: 'Archivo', 'Space Grotesk', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-body: 'Space Grotesk', 'Archivo', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-display: 'Bricolage Grotesque', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-body: 'Bricolage Grotesque', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
 }
 
 * {
@@ -715,102 +747,47 @@ video {
   margin-top: 34px;
 }
 
+/* 作品库分两层的分组标题：先出标题与条数，说明文字换行到下一行，避免窄屏挤压。 */
+.library__group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 14px;
+  margin-top: clamp(40px, 5vw, 66px);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.library__group-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.library__group-count {
+  padding: 3px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--text-dim);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+.library__group-note {
+  flex: 1 1 100%;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.library__group + .grid {
+  margin-top: clamp(20px, 2.4vw, 30px);
+}
+
 /* 31 条里横屏连排时，8 栏宽的卡片会剩 4 栏空位；密集排列自动用小卡回填。 */
 #library .grid {
   grid-auto-flow: dense;
-}
-
-/* ---------- projects ---------- */
-
-.projects {
-  display: grid;
-  gap: 1px;
-  margin-top: 44px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--line);
-}
-
-.project {
-  display: grid;
-  gap: 14px;
-  padding: clamp(26px, 3.4vw, 46px);
-  background: var(--bg);
-  transition: background 0.4s var(--ease);
-}
-
-.project:hover {
-  background: var(--bg-soft);
-}
-
-.project__head {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-}
-
-.project__index {
-  font-family: var(--font-display);
-  font-size: clamp(30px, 3.6vw, 52px);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--line-strong);
-}
-
-.project__kind {
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.project__title {
-  font-family: var(--font-display);
-  font-size: clamp(21px, 2.3vw, 32px);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-.project__copy {
-  max-width: 780px;
-  color: var(--text-soft);
-  font-size: 15px;
-}
-
-.project__points,
-.project__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.project__points li {
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: #ffbe97;
-  font-size: 13px;
-}
-
-.project__tags {
-  margin-top: 4px;
-}
-
-.project__tags li {
-  font-size: 12.5px;
-  letter-spacing: 0.06em;
-  color: var(--text-dim);
-}
-
-.project__tags li::before {
-  content: '#';
-  margin-right: 3px;
-  color: var(--accent);
 }
 
 /* ---------- services ---------- */

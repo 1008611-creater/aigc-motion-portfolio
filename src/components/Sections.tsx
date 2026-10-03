@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { capabilities, education, profile, projects, services, steps, works } from "../data/portfolio";
+import { capabilities, education, profile, services, steps, works } from "../data/portfolio";
 import type { Work } from "../data/portfolio";
 import { useReveal } from "../hooks/useReveal";
 import { FilterChips } from "./FilterChips";
@@ -36,42 +36,6 @@ export function WorkSection({ onOpen }: { onOpen: (work: Work) => void }) {
       </div>
 
       {visible.length === 0 ? <p className="empty">这个分类下暂时没有样片。</p> : null}
-    </section>
-  );
-}
-
-export function ProjectSection() {
-  const ref = useReveal<HTMLDivElement>();
-
-  return (
-    <section className="section section--alt" id="projects">
-      <SectionHead
-        eyebrow="Case Studies"
-        title="四条项目线，对应四种推进方式"
-        copy="从生成式内容交付到 3D 交互、复杂业务收束与量产落地，每条都给出可核对的证据。"
-      />
-      <div className="projects" ref={ref} data-reveal="hidden">
-        {projects.map((project) => (
-          <article className="project" key={project.index}>
-            <div className="project__head">
-              <span className="project__index">{project.index}</span>
-              <p className="project__kind">{project.kind}</p>
-            </div>
-            <h3 className="project__title">{project.title}</h3>
-            <p className="project__copy">{project.copy}</p>
-            <ul className="project__points">
-              {project.points.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-            <ul className="project__tags">
-              {project.tags.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
     </section>
   );
 }
@@ -118,8 +82,8 @@ export function CapabilitySection() {
     <section className="section section--alt" id="capability">
       <SectionHead
         eyebrow="Capability"
-        title="四条能力，都能回到具体项目"
-        copy="不做抽象标签，每条能力都在前面的案例里能找到对应证据。"
+        title="四条能力，服务于真实内容交付"
+        copy="从内容制作到工程实现，能力最终回到可观看、可交付的作品。"
       />
       <div className="capabilities" ref={ref} data-reveal="hidden">
         {capabilities.map((item) => (
