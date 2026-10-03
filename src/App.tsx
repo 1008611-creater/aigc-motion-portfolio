@@ -8,7 +8,6 @@ import { LibrarySection } from "./components/LibrarySection";
 import {
   CapabilitySection,
   ContactSection,
-  ProjectSection,
   ServiceSection,
   WorkSection,
 } from "./components/Sections";
@@ -29,7 +28,6 @@ export default function App() {
         <Hero />
         <WorkSection onOpen={setActive} />
         <LibrarySection onOpen={setActive} />
-        <ProjectSection />
         <ServiceSection />
         <CapabilitySection />
         <ContactSection />

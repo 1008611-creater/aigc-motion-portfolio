@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { Work } from "../data/portfolio";
 
 type Props = {
@@ -9,6 +9,7 @@ type Props = {
 
 export function Lightbox({ work, onClose }: Props) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     if (!work) return;
@@ -32,10 +33,10 @@ export function Lightbox({ work, onClose }: Props) {
       {work ? (
         <motion.div
           className="lightbox"
-          initial={{ opacity: 0 }}
+          initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: reduced ? 0 : 0.24, ease: [0.22, 1, 0.36, 1] }}
           role="dialog"
           aria-modal="true"
           aria-label={work.title}
@@ -44,10 +45,10 @@ export function Lightbox({ work, onClose }: Props) {
           <motion.div
             className="lightbox__panel"
             data-orientation={work.orientation}
-            initial={{ y: 26, scale: 0.97, opacity: 0 }}
+            initial={reduced ? false : { y: 26, scale: 0.97, opacity: 0 }}
             animate={{ y: 0, scale: 1, opacity: 1 }}
             exit={{ y: 18, scale: 0.98, opacity: 0 }}
-            transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: reduced ? 0 : 0.34, ease: [0.22, 1, 0.36, 1] }}
             onClick={(event) => event.stopPropagation()}
           >
             <button className="lightbox__close" type="button" onClick={onClose} aria-label="关闭">

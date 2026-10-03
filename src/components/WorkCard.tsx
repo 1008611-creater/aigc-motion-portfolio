@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useReducedMotion } from "motion/react";
 import type { Work } from "../data/portfolio";
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
 // 悬停时才挂载 video：11 条片子在列表里同时加载会直接拖垮首屏。
 export function WorkCard({ work, onOpen }: Props) {
   const [preview, setPreview] = useState(false);
+  const reduced = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const startPreview = () => {
@@ -24,7 +26,7 @@ export function WorkCard({ work, onOpen }: Props) {
     <article
       className="card"
       data-orientation={work.orientation}
-      onMouseEnter={startPreview}
+      onMouseEnter={reduced ? undefined : startPreview}
       onMouseLeave={() => setPreview(false)}
     >
       <button className="card__hit" type="button" onClick={() => onOpen(work)} aria-label={"播放：" + work.title}>

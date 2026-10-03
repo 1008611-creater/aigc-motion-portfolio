@@ -4,7 +4,6 @@ import { motion, useScroll, useSpring } from "motion/react";
 const NAV_ITEMS = [
   { id: "work", label: "作品" },
   { id: "library", label: "作品库" },
-  { id: "projects", label: "项目" },
   { id: "capability", label: "能力" },
   { id: "contact", label: "联系" },
 ];
@@ -101,8 +100,7 @@ export function Footer({ phone, email, github }: { phone: string; email: string;
         </div>
       </div>
       <p className="footer__note">
-        页面内所有样片与项目信息均来自真实交付记录；如需正式简历或补充材料，可通过电话或邮箱索取。
-      </p>
+        页面内的 AIGC 样片均来自真实制作与交付记录；如需正式简历或补充材料，可通过电话或邮箱索取。</p>
     </footer>
   );
 }
